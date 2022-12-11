@@ -1,15 +1,17 @@
 /* eslint-disable no-plusplus */
 export default class Team {
-  #counter = 0;
+  constructor() {
+    this.counter = 0;
+  }
 
   addChar(char) {
-    this[`char${this.#counter++}`] = char;
+    this[`char${this.counter++}`] = char;
   }
 
   [Symbol.iterator]() {
     const thisObj = this;
     let current = 0;
-    const last = this.#counter;
+    const last = this.counter;
     return {
       next() {
         const id = `char${current}`;
