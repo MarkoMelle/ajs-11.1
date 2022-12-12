@@ -1,23 +1,20 @@
 /* eslint-disable no-plusplus */
 export default class Team {
   constructor() {
-    this.counter = 0;
+    this.Chars = [];
   }
 
   addChar(char) {
-    this[`char${this.counter++}`] = char;
+    this.Chars.push(char);
   }
 
   [Symbol.iterator]() {
-    const thisObj = this;
     let current = 0;
-    const last = this.counter;
+    const last = this.Chars.length;
     return {
-      next() {
-        const id = `char${current}`;
+      next: () => {
         if (current < last) {
-          current++;
-          return { value: thisObj[id], done: false };
+          return { value: this.Chars[current++], done: false };
         }
         return { done: true };
       },
